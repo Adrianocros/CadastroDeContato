@@ -50,5 +50,12 @@ void put(User user){
     }
   notifyListeners();
 }
+//method remove
+void remove(User user){
+  if(user != null && user.id != null){
+    _items.remove(user.id);
+    notifyListeners();
+  }
+}
 
 }

@@ -1,14 +1,15 @@
+
 import 'package:flutter/material.dart';
 import 'package:cadcliente_flutter/models/user.dart';
 import 'package:cadcliente_flutter/provider/users.dart';
 import 'package:provider/provider.dart';
 
+
 class UserForm extends StatelessWidget {
-  
   final _form = GlobalKey<FormState>();
   final Map<String, String> _formData = {};
 
-  @override
+@override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
@@ -16,17 +17,20 @@ class UserForm extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: (){
-              final isValid =  _form.currentState!.validate();
+            onPressed: () {
+              final isValid =  _form.currentState.validate();
               if(isValid){
-                _form.currentState!.save();
-              Provider.of<Users>(context, listen: false).put(User(
-                id: _formData['id'], 
-                name: _formData['name'], 
-                email: _formData['email'], 
-                avatarUrl: _formData['avatarUrl']))
-               );
-            Navigator.of(context).pop();
+                _form.currentState.save();
+                
+             Provider.of<Users>(context, listen: false).put(
+                  User(
+                    id: _formData['id'],
+                    name: _formData['name'],
+                    email: _formData['email'],
+                    avatarUrl: _formData['avatarUrl'],
+                  ),
+                );
+              Navigator.of(context).pop();
             }
             },          
           ),
@@ -47,22 +51,24 @@ class UserForm extends StatelessWidget {
                 }
 
                 if(value.trim().length < 3){
-                  return 'Nome pequeno, Minimo 3 letras !';
+                  return 'Nome pequeno. Minimo 3 letras !';
                 }
                 return null;
               },
-              onSaved: (value) => _formData['name'] = value!,            
+              onSaved: (value) => _formData['name'] = value,            
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'E-Mail'),
-               onSaved: (value) => _formData['email'] = value!,     
+               onSaved: (value) => _formData['email'] = value,     
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Avatar'),
-               onSaved: (value) => _formData['avatarUrl'] = value!,     
+               onSaved: (value) => _formData['avatarUrl'] = value,     
             ),
-          ]),
-      )),
+          ]
+          ),
+      )
+      ),
     );
   }
 

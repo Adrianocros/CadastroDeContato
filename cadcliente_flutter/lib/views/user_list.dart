@@ -4,6 +4,7 @@ import 'package:cadcliente_flutter/components/user_title.dart';
 import 'package:cadcliente_flutter/data/dummy_users.dart';
 import 'package:cadcliente_flutter/models/user.dart';
 import 'package:cadcliente_flutter/provider/users.dart';
+import 'package:cadcliente_flutter/routes/app_routs.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,8 +18,12 @@ Widget build(BuildContext context){
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: (){},
-          )
+            onPressed: (){
+              Navigator.of(context).pushNamed(
+                AppRouts.USER_FORM
+              );
+            },
+          ),
         ],
       ),
       body: ListView.builder(

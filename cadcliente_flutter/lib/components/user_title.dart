@@ -1,3 +1,4 @@
+import 'package:cadcliente_flutter/routes/app_routs.dart';
 import 'package:flutter/material.dart';
 import 'package:cadcliente_flutter/models/user.dart';
 
@@ -23,7 +24,12 @@ Widget build(BuildContext context){
        IconButton(
          icon: Icon(Icons.edit),
          color: Colors.orange,
-         onPressed: (){},
+         onPressed: (){
+           Navigator.of(context).pushNamed(
+             AppRouts.USER_FORM, 
+             arguments: user,
+           );
+           },
        ),
       IconButton(
         icon: Icon(Icons.delete),

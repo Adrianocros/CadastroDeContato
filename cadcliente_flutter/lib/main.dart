@@ -1,4 +1,6 @@
 import 'package:cadcliente_flutter/provider/users.dart';
+import 'package:cadcliente_flutter/routes/app_routs.dart';
+import 'package:cadcliente_flutter/views/user-forma.dart';
 import 'package:cadcliente_flutter/views/user_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +23,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(   
           primarySwatch: Colors.blue,
         ),
-        home: UserList(),
+         routes: {
+          AppRouts.HOME:(_) => UserList(),
+          AppRouts.USER_FORM:(_) => UserForm()
+        },
       ),
     );
   }

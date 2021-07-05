@@ -1,6 +1,8 @@
+import 'package:cadcliente_flutter/provider/users.dart';
 import 'package:cadcliente_flutter/routes/app_routs.dart';
 import 'package:flutter/material.dart';
 import 'package:cadcliente_flutter/models/user.dart';
+import 'package:provider/provider.dart';
 
 class UserTitle extends StatelessWidget {
 
@@ -34,7 +36,31 @@ Widget build(BuildContext context){
       IconButton(
         icon: Icon(Icons.delete),
         color: Colors.red,
-        onPressed: (){},
+        onPressed: (){
+          showDialog(context: context, builder: (ctx)=> AlertDialog(
+            title: Text('Excluir contato'),
+            content: Text('Tem certeaza?'),
+            actions: <Widget>[
+              // ignore: deprecated_member_use
+              FlatButton(
+                onPressed:(){
+                  Navigator.of(context).pop();
+                }, 
+              child: Text('Não'),
+              ),
+              // ignore: deprecated_member_use
+              FlatButton(
+                onPressed:(){
+                  Provider.of<Users>(context, listen:false)
+                  .remove(user);
+                Navigator.of(context).pop();
+                }, 
+              child: Text('Sim'),
+              ),
+            ],
+          ));
+          
+        },
       )
       ],
     ),

@@ -2,12 +2,14 @@
 
 import 'package:cadcliente_flutter/components/user_title.dart';
 import 'package:cadcliente_flutter/data/dummy_users.dart';
+import 'package:cadcliente_flutter/provider/users.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UserList extends StatelessWidget{
 @override
 Widget build(BuildContext context){
-  final users = {...DUMMY_USER};
+  final Users users = Provider.of(context);
   return Scaffold(
       appBar: AppBar(
         title: Text('Lista de contatos'),
@@ -19,8 +21,8 @@ Widget build(BuildContext context){
         ],
       ),
       body: ListView.builder(
-      itemCount:users.length ,
-      itemBuilder:(ctx, i) => UserTitle(users.values.elementAt(i)),
+      itemCount:users.count ,
+      itemBuilder:(ctx, i) => UserTitle(users.byIndex(i)),
       ),
   );
 }

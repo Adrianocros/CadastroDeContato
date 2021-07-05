@@ -2,6 +2,7 @@
 
 import 'package:cadcliente_flutter/components/user_title.dart';
 import 'package:cadcliente_flutter/data/dummy_users.dart';
+import 'package:cadcliente_flutter/models/user.dart';
 import 'package:cadcliente_flutter/provider/users.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
